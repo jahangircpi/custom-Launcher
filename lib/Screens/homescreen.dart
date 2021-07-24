@@ -1,10 +1,9 @@
-
-
 import 'package:custom_launcher/controller.dart';
 import 'package:device_apps/device_apps.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:glass_kit/glass_kit.dart';
+
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -22,12 +21,21 @@ class HomeScreen extends StatelessWidget {
         return Image.memory(controller.applists.value[index].icon);
       }
     }
-    var threshold=100;
 
-    return Scaffold(  body: SafeArea(
+
+
+    return Scaffold(
+        body: SafeArea(
       child: Stack(
         children: [
-          Container(height: size.height,width: size.width,child: Image.asset("images/backgroundimage1.jpg",fit: BoxFit.cover,),),
+          Container(
+            height: size.height,
+            width: size.width,
+            child: Image.asset(
+              "images/backgroundimage1.jpg",
+              fit: BoxFit.cover,
+            ),
+          ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(child: Obx(() {
@@ -59,7 +67,10 @@ class HomeScreen extends StatelessWidget {
                                 Wrap(
                                   children: [
                                     Text(
-                                        controller.applists.value[index].appName,style: TextStyle(color: Colors.white),),
+                                      controller
+                                          .applists.value[index].packageName,
+                                      style: TextStyle(color: Colors.white),
+                                    ),
                                   ],
                                 ),
                               ],
@@ -82,12 +93,10 @@ class HomeScreen extends StatelessWidget {
               children: [
                 Expanded(
                   flex: 0,
-                  child:
-
-               GlassContainer.frostedGlass(
+                  child: GlassContainer.frostedGlass(
                     height: size.height,
-                 width: size.width * 0.15,
-                    child:  Column(
+                    width: size.width * 0.15,
+                    child: Column(
                       children: [
                         GestureDetector(
                           onTap: () {
@@ -108,42 +117,18 @@ class HomeScreen extends StatelessWidget {
                               fit: BoxFit.cover,
                             )),
                       ],
-                    ),),
-                  
-               
+                    ),
+                  ),
                 ),
                 Expanded(child: Container()),
               ],
             ),
           ),
-    controller.showbottombar.value==false?  Positioned(
-        bottom: 0,
-        left: 0,
-
-        child: Container(
-          width: size.width,
-          color: Colors.blue,child: Text("hllo"),),):Container()
-        
-        
+         
         ],
       ),
     ));
   }
 
-
-bottombar(size){
-return BottomAppBar(
-child: Container(height: size.height*0.4,color: Colors.red,),
-
-);
-
-
+ 
 }
-
-
-
-
-}
-
-
-
